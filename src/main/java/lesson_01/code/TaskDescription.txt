@@ -1,0 +1,58 @@
+Написать приложение для хранения списка задач (todo list)
+
+Функционал:
+CRUD (create, read (find), update, delete)
+
+- добавление новой задачи
+- поиск задачи по id
+- поиск задачи по названию
+- удаление задачи по id
+- редактирование задачи (описание)
+
+=========================================================
+
+                               <-|->
+клиент -> фронт-енд / user menu --> service (методы сервисов) -> репозиторий
+
+
+Entity:
+
+Task
+- id
+- name
+- description
+
+
+Репозиторий:
+TaskRepository
+List<Task> tasks
+
+
+DTO (data transfer object)
+
+RequestDTO
+- name
+- description
+
+ResponseDTO - ???
+
+
+Service:
+
+- Task addNewTask(RequestDTO request)
+- Task findTaskByID(Integer id)
+- List<Task> findTasksByName(String name)
+- List<Task> findAll()
+- deleteTaskById(Integer id)
+- updateTask(Integer id, String newDescription)
+
+
+UI
+- add new task
+- find all tasks
+- find task by id
+- find tasks by name
+- delete task by id
+- update task (*)
+
+

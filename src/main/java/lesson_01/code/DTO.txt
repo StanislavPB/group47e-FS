@@ -1,0 +1,37 @@
+DTO (data transfer object)
+
+
+User
+
+- id
+- name
+- password
+- email
+- createDate
+- lastLogin
+- status
+- role
+
+При регистрации мы получаем от пользователя:
+
+CreateUserDtoRequest
+- name
+- password
+- email
+
+public User createNewUser(CreateUserDtoRequest request){
+// создание нового пользователя
+
+return newUser;
+}
+
+
+UserDtoResponse
+- id
+- name
+- email
+- status
+- role
+
+
+В ответ на запрос о пользователе мы будем возвращать НЕ User, а UserDtoResponse
