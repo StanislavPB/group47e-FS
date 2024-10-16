@@ -1,0 +1,25 @@
+DRY - don't repeat yourself - НЕ ПОВТОРЯЙТЕСЬ!
+
+SSOT - single source of truth - единый источник правды
+
+KISS -
+Keep it simple, stupid!
+Keep it stupid simple!
+
+SOLID -
+S - single responsibility principle - принцип единой ответсвенности
+O - open-close principle - принцип открытости / закрытости
+L - Liskov substitution principle - принцип подстановки Лисков
+I - interface segregation principle - принцип разделения интерфейсов
+D - dependency inversion principle - принцип инверсии зависимостей
+
+
+*NIX-system
+
+getReaderAndRelatedBooks -> getReader() и getReaderBooks( getReader() )
+
+
+YAGNI
+agile-methodological
+
+
