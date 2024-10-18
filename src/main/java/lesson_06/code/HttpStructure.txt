@@ -1,0 +1,35 @@
+Http - запросы
+
+GET
+POST
+PUT
+DELETE
+
+
+GET - запрос контента с сервера
+
+http://www.mysite.com/images?pic1=100&pic=500
+
+www.mysite.com - имя хоста
+/images - путь запроса
+? - разделитель обозначающий, что далее следуют параметры запроса
+
+параметры перечисляются в виде ключ=значение и
+если их несколько то разделяются '&'
+
+
+POST - публикация данных на сервере
+
+POST /images/add/json HTTP/1.1
+Accept: application/json
+Content-Type: application/json
+Content-Length: ...
+Host: mysite.com
+
+{
+"id":123,
+"image":"pic1.jpeg"
+}
+
+
+https://datatracker.ietf.com/doc/html/rfc7231

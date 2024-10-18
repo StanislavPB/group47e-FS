@@ -1,0 +1,26 @@
+URI и URL - основные понятия
+
+URI(Uniform Resource Identifier)
+
+пример:
+
+http://www.example.com:8080/docs/resource1.html?id=123#section2
+
+протокол: http
+адрес (authority) - www.example.com:8080
+путь - /docs/resource1.htm
+дополнительный параметр запроса - id=123
+фрагмент - #section2
+
+
+URL - uniform resource locator - подтип для URI
+
+
+http://localhost:8080/api/clients/ - наше приложение будет идентифицировать этот запрос, как желание
+получить информацию о всех клиентах
+
+http://localhost:8080/api/clients/4 - хотим получить данные о клиенте № 4
+
+http://localhost:8080/api/clients/findByName?name=James
+
+
