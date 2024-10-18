@@ -1,0 +1,83 @@
+Простой HTTP-запрос
+
+GET / HTTP/1.1
+Host: myserver.com
+User-agent: firefox/11.0 (operating system, version, en-US)
+
+Стартовая строка:
+GET - метод запроса
+/ - путь запроса
+HTTP/1.1 - версия протокола передачи данных
+
+Заголовки:
+Host - к кому адресован запрос
+User-agent - клиент
+
+
+
+наш сайт mycorp.com
+
+mycorp.com/clients - get запрос
+- запусти метод
+public ClientResponse findAllClients()
+
+
+mycorp.com/clients?firstname=James&secondname=Bond
+
+mycorp.com - host
+/clients - путь запроса
+? - разделитель для дополнительных параметров запроса
+формат параметров ключ=значение и разделяются '&'
+
+
+POST - запрос
+
+POST /newclient HTTP/1.1
+Accept: application/json (MIME-тип Multipurpose Internet Mail Extension)
+Content-Type: application/json
+Content-Length : 31
+Host: mycorp.com
+
+{
+"id":1,
+"username":"James Bond"
+}
+
+HTTP-ответ
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Content-Length: ...
+
+<html>
+   <head>
+   <title> страница ответа </title>
+   </head>
+   <body>
+   ......
+   </body>
+</html>
+
+
+Response Status Codes
+
+1xx - информационный. Запрос получен и сервер готов к продолжению
+2xx - успешный. Запрос получен, понятен и обработан
+3xx - перенаправление. Следующие действия нужно выполнить для обработки запроса
+4xx - ошибка на стороне клиента - Запрос содержит ошибку или не соответствует протоколу
+5xx - ошибка на стороне сервера - сервер не смог обработать запрос, хотя запрос был составлен верно
+
+Более развернутый (конкретный) ответ зависит от 2ой и 3ей цифры.
+
+200 OK - запрос получен и успешно обработан
+201 Create - запрос получен, успешно обработан и в результате обработки был создан новый ресурс или его экземпляр
+
+301 Moved Permanently - запрашиваемый ресурс был перемещен навсегда и запросы к нему необходимо осуществлять по новому адресу
+
+403 Forbidden - запрос принят и понятен, но требуется авторизация
+404 Not Found - сервер не нашел ресурс по адресу
+
+500 Internal server error - внутренняя ошибка сервера во время обработки запроса
+501 Not Implemented - сервер не поддерживает необходимую функциональность для ответа на запрос
+
+
