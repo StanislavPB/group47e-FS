@@ -1,0 +1,97 @@
+SecurityContextHolder -
+SecurityContext - содержит объект Authentication
+Authentication - представляет пользователя (principal)
+GrantedAuthority - разрешения пользователя (USER, ADMIN)
+UserDetails - содержится необходимая информация для создания объекта Authentication
+              Содержит:
+               - имя пользователя
+               - пароль
+               - флаги: isAccountNonExpire, isAccountNonLocked, isEnable
+               - коллекцию прав (ролей) пользователя
+
+DelegatingPasswordEncoder
+
+Хранение паролей:
+{id}encodingPassword
+
+password
+$2a$12$15GMiCMOt7e3Ow38HbUpx.RqKgGHdc5vLs.6j5UFViruAQK7KVzfC
+
+BCryptPasswordEncoder (настройка по умолчанию параметр надежности = 10)
+
+BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(14);
+String result = encoder.encode("password");
+
+другие методы - argon2, scrypt, pbkdf2
+
+
+Подделка межсайтовых запросов (CSRF)
+
+
+FilterChain (цепочка фильтров)
+
+содержит экземпляры Filter и Servlet
+- HttpServletRequest
+- HttpServletResponse
+
+
+пример использования FilterChain
+
+public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) {
+// делаем что-то перед віполнением основной части приложения
+chain.doFilter(request, response);
+// продолжение
+}
+
+Фильтры:
+
+ForceEagerSessionCreationFilter
+ChannelProcessingFilter
+WebAsyncManagerIntegrationFilter
+SecurityContextPersistenceFilter !!!
+HeaderWriterFilter
+CorsFilter
+CsrfFilter       !!!
+LogoutFilter     !!!
+OAuth2AuthorizationRequestRedirectFilter  !!!!!
+Saml2WebSsoAuthenticationRequestFilter
+X509AuthenticationFilter
+AbstractPreAuthenticatedProcessingFilter
+CasAuthenticationFilter
+OAuth2LoginAuthenticationFilter   !!!!
+Saml2WebSsoAuthenticationFilter
+UsernamePasswordAuthenticationFilter  !!!
+OpenIDAuthenticationFilter
+DefaultLoginPageGeneratingFilter
+DefaultLogoutPageGeneratingFilter
+ConcurrentSessionFilter
+DigestAuthenticationFilter
+BearerTokenAuthenticationFilter   !!!!!!!!!!!!!!!!
+BasicAuthenticationFilter        !!!!
+RequestCacheAwareFilter
+SecurityContextHolderAwareRequestFilter
+JaasApiIntegrationFilter
+RememberMeAuthenticationFilter
+AnonymousAuthenticationFilter
+OAuth2AuthorizationCodeGrantFilter
+SessionManagementFilter
+ExceptionTranslationFilter
+FilterSecurityInterceptor    !!!!!!!!!!!
+SwitchUserFilter
+
+
+Обработка исключений безопасности:
+ExceptionTranslationFilter - создает Http-ответы на основании AccessDeniedException и  AuthenticationException
+
+как бы выглядел "код" приложения под ExceptionTranslationFilter
+
+try{
+filterChain.doFilter(request, response);
+} catch (AccessDeniedException | AuthenticationException exception ){
+    if (!authenticated || exception instanceof AuthenticationException) {
+    startAuthentication();
+    } else {
+    accessDenied()
+    }
+     }
+
